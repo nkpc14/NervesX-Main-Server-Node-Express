@@ -28,7 +28,7 @@ mongoose.connect('mongodb://localhost:27017/NervesX', {useNewUrlParser: true})
     .then(result => {
         const server = app.listen(8000);
         const io = require('./socket').init(server);
-        console.log("Server Started at http://localhost:" + 8000)
+        console.log("Server Started at http://localhost:" + 8000);
         io.on('connection', socket =>{
             console.log("Client Connected!");
         })
