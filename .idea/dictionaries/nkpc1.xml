@@ -2,6 +2,7 @@
   <dictionary name="nkpc1">
     <words>
       <w>firstname</w>
+      <w>graphiql</w>
       <w>lastname</w>
     </words>
   </dictionary>

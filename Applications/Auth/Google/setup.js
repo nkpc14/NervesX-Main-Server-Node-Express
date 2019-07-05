@@ -36,6 +36,7 @@ passport.use(new GoogleStrategy({
                     firstname:profile.name.familyName,
                     lastname:profile.name.givenName,
                     email:profile.emails[0].value,
+                    username:profile.emails[0].value.split("@")[0],
                     password:hashedPassword,
                     profilePhoto:profile.photos[0].value,
                 };

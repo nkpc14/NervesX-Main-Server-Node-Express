@@ -1,5 +1,4 @@
 import mongoose from 'mongoose'
-import {User} from '../User/models'
 const Schema = mongoose.Schema;
 
 export const LikeType = mongoose.model('LikeType',new Schema({
@@ -17,7 +16,6 @@ export const Like = mongoose.model('Like',new Schema({
     emoji:{
         data:Buffer,
         contentType:String,
-        required: true
     },
     likeType:{
         type:mongoose.Schema.Types.ObjectId,
@@ -28,12 +26,12 @@ export const Like = mongoose.model('Like',new Schema({
     timestamps:true
 }));
 
-export const Reply = mongoose.model('Comment',new Schema({
+export const Reply = mongoose.model('Reply',new Schema({
     data:{
         type:String,
         required:true
     },
-    likes:[Like]
+    likes:[{type:mongoose.Schema.Types.ObjectId,ref:'Like'}]
 },{
     timestamps:true
 }));
@@ -44,8 +42,8 @@ export const Comment = mongoose.model('Comment',new Schema({
         type:String,
         required:true
     },
-    likes:[Like],
-    reply:[Reply],
+    likes:[{type:mongoose.Schema.Types.ObjectId,ref:'Like'}],
+    reply:[{type:mongoose.Schema.Types.ObjectId,ref:'Reply'}],
 
 },{
     timestamps:true
@@ -61,8 +59,8 @@ export const Post = mongoose.model('Post',new Schema({
         type:String,
         required:true
     },
-    comments:[Comment],
-    likes:[Like],
+    comments:[{type:mongoose.Schema.Types.ObjectId,ref:'Comment'}],
+    likes:[{type:mongoose.Schema.Types.ObjectId,ref:'Like'}],
     automate:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'PostAutomation'
@@ -72,7 +70,7 @@ export const Post = mongoose.model('Post',new Schema({
 }));
 
 export const Friend = mongoose.model('Friend',new Schema({
-    friends:[User],
+    friends:[{type:mongoose.Schema.Types.ObjectId,ref:'User'}],
     bestFriend:{
         type:Boolean,
     }
@@ -86,11 +84,11 @@ export const SocialNodeState = mongoose.model('SocialNodeState',new Schema({
       type:mongoose.Schema.Types.ObjectId,
       ref:'User'
     },
-    following:[User],
-    follower: [User],
+    following:[{type:mongoose.Schema.Types.ObjectId,ref:'User'}],
+    follower: [{type:mongoose.Schema.Types.ObjectId,ref:'User'}],
     friend:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'Friend'
     },
-    posts:[Post]
+    posts:[{type:mongoose.Schema.Types.ObjectId,ref:'Post'}]
 }));

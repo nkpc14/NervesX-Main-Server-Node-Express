@@ -8,9 +8,21 @@ export const loginUser = (req, res, next) => {
 
 export const getUserName = (req, res, next) => {
     const username = req.body.username;
-    User.findOne({username}, (err, page) => {
-        console.log(page)
-    })
+    User.findOne({username})
+        .then(user => {
+            if (!user) {
+                console.log(user)
+                const err = new Error("User Don't Exist");
+                res.status(404);
+                res.json({
+                    error: "User Don't Exist"
+                })
+            }
+            res.json(user)
+        })
+        .catch(err => {
+            console.log(err);
+        })
 };
 
 export const registerUser = (req, res, next) => {
