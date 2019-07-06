@@ -7,4 +7,6 @@ const typesArray = fileLoader(path.join(__dirname, '../**/*.graphql'));
 
 console.log("Types: ",path.join(__dirname, '../**/*.graphql'));
 // writeFileSync('joined.graphql', typesArray)
+console.log(typesArray);
+
 module.exports = mergeTypes(typesArray, {all: true});

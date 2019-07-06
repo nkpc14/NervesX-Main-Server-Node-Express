@@ -1,7 +1,5 @@
 import path from 'path';
 import { fileLoader, mergeResolvers } from 'merge-graphql-schemas';
 
-const resolversArray = fileLoader(path.join(__dirname, "../**/*.Resolver.*"));
-console.log("Resolver: ",path.join(__dirname, "../User/graphql/resolvers/userResolver.js"))
-console.log(resolversArray);
+const resolversArray = fileLoader(path.join(__dirname, "../**/*Resolvers.*"));
 export default mergeResolvers(resolversArray);
