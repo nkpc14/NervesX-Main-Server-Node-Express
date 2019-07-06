@@ -14,13 +14,12 @@ import {errorHandlerGlobal, pageNotFound} from './ServerSecurity/errorHandling'
 import {buildSchema} from 'graphql'
 import graphqlHTTP from 'express-graphql'
 
-import rootValue from './graphql/resolvers/index'
-import typeDefs from './graphql/types/index'
+import rootValue from './Applications/MainGraphqlSchema/ResolverIndex'
+import typeDefs from './Applications/MainGraphqlSchema/TypeDefIndex'
 
 //Routes Imports
-import UserRoutes from './Applications/User/routes'
-import SocialRoutes from './Applications/SocialNerve/routes'
-
+// import graphqlUserRoutes from './Applications/User/routes'
+// import SocialRoutes from './Applications/SocialNerve/routes'
 const schema = buildSchema(typeDefs);
 const app = express();
 
@@ -39,8 +38,8 @@ app.use(passport.initialize());
 //Routes Implementations
 app.use(cleanBody);
 app.use('', GoogleAuth);
-app.use('/user', UserRoutes);
-app.use('/post', SocialRoutes);
+// app.use('/user', UserRoutes);
+// app.use('/post', SocialRoutes);
 
 
 app.use(pageNotFound);
