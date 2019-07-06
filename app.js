@@ -17,9 +17,7 @@ import graphqlHTTP from 'express-graphql'
 import typeDefs from './Applications/MainGraphqlSchema/TypeDefIndex'
 import rootValue from './Applications/MainGraphqlSchema/ResolverIndex'
 
-//Routes Imports
-// import graphqlUserRoutes from './Applications/User/routes'
-// import SocialRoutes from './Applications/SocialNerve/routes'
+
 const schema = buildSchema(typeDefs);
 const app = express();
 
@@ -39,9 +37,6 @@ app.use(passport.initialize());
 //Routes Implementations
 app.use(cleanBody);
 app.use('', GoogleAuth);
-// app.use('/user', UserRoutes);
-// app.use('/post', SocialRoutes);
-
 
 app.use(pageNotFound);
 app.use(errorHandlerGlobal);
