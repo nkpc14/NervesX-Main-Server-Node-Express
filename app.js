@@ -31,6 +31,16 @@ app.use('/graphql', graphqlHTTP({
     schema,
     rootValue,
     graphiql: true,
+    customFormatErrorFn(err) {
+        if (!err.originalError) {
+            //Original Errors are set by Express app
+            return err;
+        }
+        const data = err.originalError.data;
+        const message = err.message || 'An Error Occurred!';
+        const code = err.originalError.code || 500;
+        return {message, status: code, data}
+    }
 }));
 
 app.use(passport.initialize());

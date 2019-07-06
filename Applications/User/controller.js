@@ -11,7 +11,7 @@ export const getUserName = (req, res, next) => {
     User.findOne({username})
         .then(user => {
             if (!user) {
-                console.log(user)
+                console.log(user);
                 const err = new Error("User Don't Exist");
                 res.status(404);
                 res.json({
