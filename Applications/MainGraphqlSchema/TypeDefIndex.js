@@ -6,5 +6,5 @@ import { writeFileSync } from 'fs'
 const typesArray = fileLoader(path.join(__dirname, '../**/*.graphql'));
 
 console.log("Types: ",path.join(__dirname, '../**/*.graphql'));
-writeFileSync('joined.graphql', typesArray)
+// writeFileSync('joined.graphql', typesArray)
 module.exports = mergeTypes(typesArray, {all: true});

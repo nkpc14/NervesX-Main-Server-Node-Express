@@ -14,8 +14,8 @@ import {errorHandlerGlobal, pageNotFound} from './ServerSecurity/errorHandling'
 import {buildSchema} from 'graphql'
 import graphqlHTTP from 'express-graphql'
 
-import rootValue from './Applications/MainGraphqlSchema/ResolverIndex'
 import typeDefs from './Applications/MainGraphqlSchema/TypeDefIndex'
+import rootValue from './Applications/MainGraphqlSchema/ResolverIndex'
 
 //Routes Imports
 // import graphqlUserRoutes from './Applications/User/routes'
@@ -27,6 +27,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('dev'));
 app.use(helmet());
+
 
 app.use('/graphql', graphqlHTTP({
     schema,
