@@ -11,3 +11,4 @@ export const MONGO_DB = '';
 
 export const PASSWORD_SALT = 'Hello i am Nitish Kumar';
 
+export const SECRET_KEY = '';
